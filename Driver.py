@@ -9,6 +9,8 @@ each fold. Output can be saved to a PDF.
 
 import NN
 import GA
+import ES
+import DE
 import numpy as np
 import matplotlib.pyplot as plt
 from random import shuffle
@@ -68,7 +70,8 @@ for i in range(k):
     # train network, receive error throughout training and the trained network. Uncomment line to train a network
     hero, lifetime_error = NN.train(shape=shape, iterations=200, data=train_data, learning_rate = 0.1, print_frequency=100)
     # hero, lifetime_error = GA.train(shape=shape, mu=20, generations=100, number_possible_parents=10, number_parents=10, quick=True, data=train_data, print_frequency=100)
-
+    #hero, lifetime_error = ES.train(shape=shape, mu=25, generations=2000, number_possible_parents=5, number_parents=5, quick=False, data=train_data, print_frequency=100)
+    #hero, lifetime_error = DE.train(shape=shape, mu=20, generations=2000, data=train_data, print_frequency=100)
     test_error = hero.test(test_data)
     print("Testing error on fold {} = {}".format(i+1, test_error))
 
